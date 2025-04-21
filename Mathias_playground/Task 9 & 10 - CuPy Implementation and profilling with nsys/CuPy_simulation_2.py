@@ -11,17 +11,13 @@ def load_data(load_dir, bid):
     interior_mask = cp.load(join(load_dir, f"{bid}_interior.npy"))
     return u, interior_mask
 
-
 def jacobi(u, interior_mask, max_iter, atol=1e-6):
     u = cp.copy(u)
-
+    interior_u = u[1:-1, 1:-1] # Preallocate the interior region which is used several times in the loop
     for i in range(max_iter):
-        # Compute average of left, right, up and down neighbors, see eq. (1)
         u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
-        u_new_interior = u_new[interior_mask]
-        delta = cp.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
-        u[1:-1, 1:-1][interior_mask] = u_new_interior
-
+        delta = cp.abs(interior_u[interior_mask] - u_new[interior_mask]).max() # Use the preallocated array 
+        interior_u[interior_mask] = u_new[interior_mask] # Here we only update the interior region and the preallocated array is used
         if delta < atol:
             break
     return u

@@ -1,16 +1,16 @@
 #!/bin/bash
-#BSUB -J CuPy_Simulation
+#BSUB -J CuPy_Simulation_time
 #BSUB -q c02613
 ### -- ask for number of cores (default: 1) --
 #BSUB -n 4
 #BSUB -R "span[hosts=1]" 
 ### -- set walltime limit: hh:mm --
-#BSUB -W 00:30
+#BSUB -W 00:15
 ### -- specify that we need 1GB of memory per core/slot -- 
 #BSUB -R "rusage[mem=1GB]"
 #BSUB -gpu "num=1:mode=exclusive_process" 
-#BSUB -o CuPy_Simulation_%J.out
-#BSUB -e CuPy_Simulation_%J.err
+#BSUB -o CuPy_Simulation_time_%J.out
+#BSUB -e CuPy_Simulation_time_%J.err
 #BSUB -u s204696@dtu.dk
 ### -- send notification at start --
 #BSUB -B
@@ -23,5 +23,5 @@ conda activate 02613
 
 lscpu # Print info about CPU
 
-kernprof -l -v CuPy_simulation.py 20
+time python CuPy_simulation.py 20
 
