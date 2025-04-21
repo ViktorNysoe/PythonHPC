@@ -41,7 +41,6 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
                 if interior_mask[j-1, k-1] == True:
                     u_new = 0.25 * (u[j+1,k] + u[j-1,k] + u[j, k+1] + u[j, k-1])
                     
-                    
                     delta = max(delta, np.abs(u[j,k]-u_new))
                     u_copy[j,k] = u_new
         u = u_copy

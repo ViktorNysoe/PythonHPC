@@ -2,14 +2,13 @@ from os.path import join
 import sys
 import time
 import cupy as cp
-import time
 
 
 def load_data(load_dir, bid):
     SIZE = 512
     u = cp.zeros((SIZE + 2, SIZE + 2))
-    u[1:-1, 1:-1] = cp.load(join(load_dir, f"{bid}_domain.cpy"))
-    interior_mask = cp.load(join(load_dir, f"{bid}_interior.cpy"))
+    u[1:-1, 1:-1] = cp.load(join(load_dir, f"{bid}_domain.npy"))
+    interior_mask = cp.load(join(load_dir, f"{bid}_interior.npy"))
     return u, interior_mask
 
 #@profile
