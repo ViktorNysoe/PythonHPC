@@ -23,5 +23,8 @@ conda activate 02613
 
 lscpu # Print info about CPU
 
-nsys profile -o CuPy_simulation python CuPy_simulation.py 20 
+nsys profile -o CuPy_simulation python CuPy_simulation.py 20
+
+
+
 
