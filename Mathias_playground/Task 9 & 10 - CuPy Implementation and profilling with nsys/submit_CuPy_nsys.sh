@@ -23,5 +23,5 @@ conda activate 02613
 
 lscpu # Print info about CPU
 
-nsys profile -o CuPy_simulation python CuPy_simulation.py 20 # This will simulate 20 floorplans and take the average time it took to simulate using the time command
+nsys profile -o CuPy_simulation python CuPy_simulation.py 20 
 
