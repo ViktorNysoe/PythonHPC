@@ -4,7 +4,7 @@
 #BSUB -W 10
 #BSUB -o simulate%J.out
 #BSUB -e simulate%J.err
-#BSUB -n 5
+#BSUB -n 8
 #BSUB -R "span[hosts=1]"
 #BSUB -R "rusage[mem=4GB]"
 #BSUB -R "select[model == XeonGold6126]"
