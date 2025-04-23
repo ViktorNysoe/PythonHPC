@@ -2,12 +2,12 @@
 #BSUB -J profiling_simulate
 #BSUB -q hpc
 ### -- ask for number of cores (default: 1) --
-#BSUB -n 4
+#BSUB -n 8
 #BSUB -R "span[hosts=1]" 
 ### -- set walltime limit: hh:mm --
 #BSUB -W 00:30
 ### -- specify that we need 4GB of memory per core/slot -- 
-#BSUB -R "rusage[mem=1GB]"
+#BSUB -R "rusage[mem=4GB]"
 ### -- Specify CPU type --
 #BSUB -R "select[model==XeonGold6126]"
 #BSUB -o profiling_simulate_%J.out
