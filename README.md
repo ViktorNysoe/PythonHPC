@@ -2,7 +2,7 @@ Repository for course 02613 Python and High Performance Computing. The repositor
 
 
 **Standard CPU configuration for job scripts**
-    -n 5
+    -n 8
     -R "span[hosts=1]"
     -R "rusage[mem=4GB]"
     -R "select[model == XeonGold6126]"
