@@ -7,3 +7,8 @@ Repository for course 02613 Python and High Performance Computing. The repositor
     -R "rusage[mem=4GB]"  
     -R "select[model == XeonGold6126]"  
 
+**Standard GPU queue for job scripts**  
+    -q gpuv100  
+    -R "select[gpu32gb]"  
+
+
