@@ -60,7 +60,7 @@ building_id, mean_temp, std_temp, pct_above_18, pct_below_15
 Wrote profile results to simulate_profiling.py.lprof
 Timer unit: 1e-06 s
 
-Total time: 245.15 s
+Total time: 228.938 s
 File: simulate_profiling.py
 Function: jacobi at line 14
 
@@ -68,16 +68,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
     14                                           @profile
     15                                           def jacobi(u, interior_mask, max_iter, atol=1e-6):
-    16        20      11346.7    567.3      0.0      u = np.copy(u)
+    16        20      11537.5    576.9      0.0      u = np.copy(u)
     17                                           
-    18    118118      70063.6      0.6      0.0      for i in range(max_iter):
+    18    118118      96311.6      0.8      0.0      for i in range(max_iter):
     19                                                   # Compute average of left, right, up and down neighbors, see eq. (1)
-    20    118118  137157013.1   1161.2     55.9          u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
-    21    118118   26465144.7    224.1     10.8          u_new_interior = u_new[interior_mask]
-    22    118118   52001293.8    440.2     21.2          delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
-    23    118118   29235396.0    247.5     11.9          u[1:-1, 1:-1][interior_mask] = u_new_interior
+    20    118118  125072830.5   1058.9     54.6          u_new = 0.25 * (u[1:-1, :-2] + u[1:-1, 2:] + u[:-2, 1:-1] + u[2:, 1:-1])
+    21    118118   25388624.4    214.9     11.1          u_new_interior = u_new[interior_mask]
+    22    118118   51394025.5    435.1     22.4          delta = np.abs(u[1:-1, 1:-1][interior_mask] - u_new_interior).max()
+    23    118118   26738040.1    226.4     11.7          u[1:-1, 1:-1][interior_mask] = u_new_interior
     24                                           
-    25    118118     209315.7      1.8      0.1          if delta < atol:
+    25    118118     237079.5      2.0      0.1          if delta < atol:
     26        20         16.1      0.8      0.0              break
-    27        20          6.2      0.3      0.0      return u
+    27        20          5.4      0.3      0.0      return u
 
