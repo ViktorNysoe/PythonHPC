@@ -27,7 +27,7 @@ def jacobi(u, interior_mask, max_iter, atol=1e-6):
             break
     return u
 
-@jit(nopython=True)
+@njit(parallel=True)
 def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
     #check that it is stored row-wise
     print("strides to check how it is stored:", u.strides)
@@ -36,7 +36,7 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
 
     for _ in range(max_iter):
         delta = 0
-        for j in range(1,u.shape[0]-1):
+        for j in prange(1,u.shape[0]-1):
             for k in range(1,u.shape[1]-1):
                 if interior_mask[j-1, k-1] == True:
                     u_new = 0.25 * (u[j+1,k] + u[j-1,k] + u[j, k+1] + u[j, k-1])
