@@ -44,7 +44,6 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
                     delta = max(delta, np.abs(u[j,k]-u_new))
                     u_copy[j,k] = u_new
         u = u_copy
-
         if delta < atol:
             break
     return u

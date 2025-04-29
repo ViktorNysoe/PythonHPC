@@ -1,9 +1,9 @@
 #!/bin/bash
-#BSUB -J simulate
+#BSUB -J Q7
 #BSUB -q hpc
 #BSUB -W 10
-#BSUB -o simulate%J.out
-#BSUB -e simulate%J.err
+#BSUB -o Q7%J.out
+#BSUB -e Q7%J.err
 #BSUB -n 8
 #BSUB -R "span[hosts=1]"
 #BSUB -R "rusage[mem=4GB]"

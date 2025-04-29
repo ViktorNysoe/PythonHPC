@@ -3,6 +3,7 @@ import sys
 from numba import jit, njit, prange
 import numpy as np
 import time
+import matplotlib.pyplot as plt
 
 def load_data(load_dir, bid):
     SIZE = 512
@@ -41,11 +42,9 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
                 if interior_mask[j-1, k-1] == True:
                     u_new = 0.25 * (u[j+1,k] + u[j-1,k] + u[j, k+1] + u[j, k-1])
                     
-                    
                     delta = max(delta, np.abs(u[j,k]-u_new))
                     u_copy[j,k] = u_new
         u = u_copy
-
         if delta < atol:
             break
     return u
@@ -75,6 +74,7 @@ if __name__ == '__main__':
         N = 1
     else:
         N = int(sys.argv[1])
+    
     building_ids = building_ids[:N]
 
     # Load floor plans
@@ -97,6 +97,8 @@ if __name__ == '__main__':
     for i, (u0, interior_mask) in enumerate(zip(all_u0, all_interior_mask)):
         u = jacobi_numba_jit(u0, interior_mask, MAX_ITER, ABS_TOL)
         all_u[i] = u
+        plt.imshow(u, cmap='magma', interpolation='nearest')
+    plt.savefig("heat_maps.png")
     end_time = time.time()-start_time
     print("iterator call: ", end_time)
 
