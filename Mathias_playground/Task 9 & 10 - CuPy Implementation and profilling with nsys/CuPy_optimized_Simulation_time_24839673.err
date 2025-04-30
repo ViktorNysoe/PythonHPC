@@ -1,5 +1,6 @@
 Modules Release 5.3.0 (2023-05-14)
-DCC-SW: Added modules (2023-aug/XeonGold6226R)
+DCC-SW: Will show modules available on avx nodes, please report un-supported architechture: avx to support@hpc.dtu.dk
+DCC-SW: Added modules (2023-aug/avx)
 DCC-SW: Removed standard modules: /apps/dcc/etc/ModulesAlma92/modulefiles
 DCC-SW: Using gnu/12.3.0 compiler (requested)
 Unloading dcc-setup/2023-aug{%gnu:-unsafe} <S>
@@ -16,9 +17,7 @@ ERROR: Unable to locate a modulefile for 'scalapack/2.1.0'
 ERROR: Unable to locate a modulefile for 'openblas/0.3.10'
 ERROR: Unable to locate a modulefile for 'ase'
 Loaded module: cuda/11.8
-WARNING: CPU IP/backtrace sampling not supported, disabling.
-Try the 'nsys status --environment' command to learn more.
 
-WARNING: CPU context switch tracing not supported, disabling.
-Try the 'nsys status --environment' command to learn more.
-
+real	0m14.802s
+user	0m13.877s
+sys	0m0.420s

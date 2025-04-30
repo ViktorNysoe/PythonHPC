@@ -1,6 +1,6 @@
 #!/bin/bash
-#BSUB -J CuPy_nsys
-#BSUB -q gpuv100
+#BSUB -J CuPy_nsys2
+#BSUB -q gpua100
 ### -- ask for number of cores (default: 1) --
 #BSUB -n 8
 #BSUB -R "span[hosts=1]" 
@@ -10,8 +10,8 @@
 #BSUB -R "rusage[mem=4GB]"
 #BSUB -gpu "num=1:mode=exclusive_process" 
 #BSUB -R "select[gpu32gb]"
-#BSUB -o CuPy_nsys_%J.out
-#BSUB -e CuPy_nsys_%J.err
+#BSUB -o CuPy_nsys2_%J.out
+#BSUB -e CuPy_nsys2_%J.err
 #BSUB -u s204696@dtu.dk
 ### -- send notification at start --
 #BSUB -B
@@ -24,7 +24,7 @@ conda activate 02613
 
 lscpu # Print info about CPU
 
-nsys profile -o CuPy_simulation python CuPy_simulation.py 20
+nsys profile -o CuPy_simulation2 python CuPy_simulation.py 20
 
 
 

@@ -1,0 +1,22 @@
+Modules Release 5.3.0 (2023-05-14)
+DCC-SW: Added modules (2023-aug/XeonGold6126)
+DCC-SW: Removed standard modules: /apps/dcc/etc/ModulesAlma92/modulefiles
+DCC-SW: Using gnu/12.3.0 compiler (requested)
+Unloading dcc-setup/2023-aug{%gnu:-unsafe} <S>
+  ERROR: Unload of sticky module skipped
+Loading dcc-setup/2020-aug
+  ERROR: Module cannot be loaded due to a conflict.
+    HINT: Might try "module unload dcc-setup" first.
+ERROR: Unable to locate a modulefile for 'python/3.8.5'
+ERROR: Unable to locate a modulefile for 'fftw/3.3.8'
+
+Loading libxc/4.3.4
+  Loading requirement: build-tools/1.0 gcc/12.3.0
+ERROR: Unable to locate a modulefile for 'scalapack/2.1.0'
+ERROR: Unable to locate a modulefile for 'openblas/0.3.10'
+ERROR: Unable to locate a modulefile for 'ase'
+Loaded module: cuda/11.8
+
+real	78m50.934s
+user	78m44.475s
+sys	0m3.928s

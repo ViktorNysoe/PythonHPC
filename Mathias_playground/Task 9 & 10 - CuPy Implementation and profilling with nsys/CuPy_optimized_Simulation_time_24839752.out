@@ -2,51 +2,47 @@ Architecture:                         x86_64
 CPU op-mode(s):                       32-bit, 64-bit
 Address sizes:                        46 bits physical, 48 bits virtual
 Byte Order:                           Little Endian
-CPU(s):                               64
-On-line CPU(s) list:                  0-63
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
 Vendor ID:                            GenuineIntel
-Model name:                           Intel(R) Xeon(R) Gold 6226R CPU @ 2.90GHz
+Model name:                           Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz
 CPU family:                           6
 Model:                                85
-Thread(s) per core:                   2
+Thread(s) per core:                   1
 Core(s) per socket:                   16
 Socket(s):                            2
-Stepping:                             7
-CPU(s) scaling MHz:                   40%
-CPU max MHz:                          3900.0000
-CPU min MHz:                          1200.0000
-BogoMIPS:                             5800.00
-Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts hwp hwp_act_window hwp_pkg_req pku ospke avx512_vnni md_clear flush_l1d arch_capabilities
-Virtualization:                       VT-x
+Stepping:                             4
+BogoMIPS:                             5200.00
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single pti intel_ppin ssbd mba ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts pku ospke md_clear flush_l1d arch_capabilities
 L1d cache:                            1 MiB (32 instances)
 L1i cache:                            1 MiB (32 instances)
 L2 cache:                             32 MiB (32 instances)
 L3 cache:                             44 MiB (2 instances)
 NUMA node(s):                         2
-NUMA node0 CPU(s):                    0-15,32-47
-NUMA node1 CPU(s):                    16-31,48-63
+NUMA node0 CPU(s):                    0-15
+NUMA node1 CPU(s):                    16-31
 Vulnerability Gather data sampling:   Mitigation; Microcode
-Vulnerability Itlb multihit:          KVM: Mitigation: VMX disabled
-Vulnerability L1tf:                   Not affected
-Vulnerability Mds:                    Not affected
-Vulnerability Meltdown:               Not affected
-Vulnerability Mmio stale data:        Mitigation; Clear CPU buffers; SMT vulnerable
+Vulnerability Itlb multihit:          KVM: Mitigation: VMX unsupported
+Vulnerability L1tf:                   Mitigation; PTE Inversion
+Vulnerability Mds:                    Mitigation; Clear CPU buffers; SMT disabled
+Vulnerability Meltdown:               Mitigation; PTI
+Vulnerability Mmio stale data:        Mitigation; Clear CPU buffers; SMT disabled
 Vulnerability Reg file data sampling: Not affected
-Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Retbleed:               Mitigation; IBRS
 Vulnerability Spec rstack overflow:   Not affected
 Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
 Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
-Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Spectre v2:             Mitigation; IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
 Vulnerability Srbds:                  Not affected
-Vulnerability Tsx async abort:        Mitigation; TSX disabled
+Vulnerability Tsx async abort:        Mitigation; Clear CPU buffers; SMT disabled
 building_id, mean_temp, std_temp, pct_above_18, pct_below_15
 10000, 14.012338788112752, 6.367431059312565, 30.941014791508444, 55.542295034537624
 10009, 11.000135812436369, 5.811144379826625, 16.6712734948236, 74.9723590310584
-10014, 14.744169941950117, 7.037733284673849, 38.26367541377415, 52.80837116508215
+10014, 14.744169941950117, 7.037733284673848, 38.26367541377415, 52.80837116508215
 10019, 14.735524480624484, 7.030325006703675, 38.14915412864569, 52.92926826787113
 10029, 10.616037322820358, 6.317331938274926, 18.25563221896085, 74.51301795448481
 10031, 12.507072852890545, 6.278432089100354, 24.044722033998173, 66.39513301711693
-10051, 13.289039951277404, 5.999085063388632, 25.97693550756574, 62.859923608050536
+10051, 13.289039951277402, 5.999085063388632, 25.97693550756574, 62.859923608050536
 10053, 11.366493551285707, 6.26121798185875, 19.9510754583921, 72.41052538787024
 10056, 14.220114507861702, 6.179461157398302, 31.763454814173965, 57.06174975667784
 10064, 12.716968937395848, 6.964227784263681, 28.79137124461432, 62.75688345539249
@@ -58,5 +54,5 @@ building_id, mean_temp, std_temp, pct_above_18, pct_below_15
 10084, 15.100584697661853, 7.150541807748643, 40.90648998644782, 50.266526125583496
 10085, 15.868862158668058, 7.192791728448739, 46.18303917834116, 44.72566696293788
 10086, 14.391525374209255, 7.2156160731937105, 37.25664572257129, 53.01884968583857
-10087, 15.07320590503116, 7.275519953981683, 41.532405798190645, 49.89713190601896
+10087, 15.073205905031166, 7.275519953981684, 41.532405798190645, 49.89713190601896
 10089, 13.989763514400204, 7.276278123379982, 35.45861191757374, 56.3640146392669

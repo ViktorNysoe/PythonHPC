@@ -1,3 +1,7 @@
+# Ignore all Nsight Systems profile outputs
+*.sqlite
+*.nsys
 *.nsys-rep
-*.pyc
-__pycache__/
+
+# Optionally, ignore any large binary artifacts in a profiling folder
+profiling/
