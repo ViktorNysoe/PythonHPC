@@ -12,4 +12,4 @@
 source /dtu/projects/02613_2025/conda/conda_init.sh
 conda activate 02613
 
-python Q11_parallel_jit.py 20
+python Q11.py 20
