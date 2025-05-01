@@ -32,7 +32,8 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
                     u_copy[j][k] = u_new
         u = u_copy
         if delta < atol:
-            return u
+            break
+    return u
 
 
 def summary_stats(u, interior_mask):
