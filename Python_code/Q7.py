@@ -14,7 +14,7 @@ def load_data(load_dir, bid):
 
 @jit(nopython=True)
 def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
-    #check that it is stored row-wise
+    #check if it is stored row-wise or column-wise
     print("strides to check how it is stored:", u.strides)
     
     u = np.copy(u)
