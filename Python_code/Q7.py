@@ -1,8 +1,9 @@
 from os.path import join
 import sys
-from numba import jit
+from numba import jit, njit, prange
 import numpy as np
 import time
+import matplotlib.pyplot as plt
 
 def load_data(load_dir, bid):
     SIZE = 512
@@ -11,28 +12,27 @@ def load_data(load_dir, bid):
     interior_mask = np.load(join(load_dir, f"{bid}_interior.npy"))
     return u, interior_mask
 
-
 @jit(nopython=True)
 def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
     #check that it is stored row-wise
     print("strides to check how it is stored:", u.strides)
     
-    u = np.copy(u)
+    u = u.copy()
 
-    for _ in range(max_iter):
+    for i in range(max_iter):
         delta = 0
-        u_copy = np.copy(u)
+        u_copy = u.copy()
         for j in range(1,u.shape[0]-1):
             for k in range(1,u.shape[1]-1):
                 if interior_mask[j-1, k-1] == True:
                     u_new = 0.25 * (u[j+1,k] + u[j-1,k] + u[j, k+1] + u[j, k-1])
                     
+                    
                     delta = max(delta, np.abs(u[j,k]-u_new))
-                    u_copy[j,k] = u_new
+                    u_copy[j][k] = u_new
         u = u_copy
         if delta < atol:
-            break
-    return u
+            return u
 
 
 def summary_stats(u, interior_mask):
@@ -59,6 +59,7 @@ if __name__ == '__main__':
         N = 1
     else:
         N = int(sys.argv[1])
+    
     building_ids = building_ids[:N]
 
     # Load floor plans
@@ -81,6 +82,8 @@ if __name__ == '__main__':
     for i, (u0, interior_mask) in enumerate(zip(all_u0, all_interior_mask)):
         u = jacobi_numba_jit(u0, interior_mask, MAX_ITER, ABS_TOL)
         all_u[i] = u
+        plt.imshow(u, cmap='magma', interpolation='nearest')
+    plt.savefig("test_map.png")
     end_time = time.time()-start_time
     print("iterator call: ", end_time)
 
