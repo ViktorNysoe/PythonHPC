@@ -15,8 +15,8 @@ def load_data(load_dir, bid):
 @jit(nopython=True)
 def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
     #check if it is stored row-wise or column-wise
-    print("strides to check how it is stored:", u.strides)
-    
+    print("strides to check how it is stored:",u.strides)
+
     u = np.copy(u)
 
     for i in range(max_iter):
@@ -25,16 +25,15 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
         for j in range(1,u.shape[0]-1):
             for k in range(1,u.shape[1]-1):
                 if interior_mask[j-1, k-1] == True:
-                    u_new = 0.25 * (u[j+1,k] + u[j-1,k] + u[j, k+1] + u[j, k-1])
-                    
-                    
-                    delta = max(delta, np.abs(u[j,k]-u_new))
+                    u_new = 0.25 * (u[j+1,k] + u[j-1,k] + u[j,k+1] + u[j,k-1])
+                    delta = max(delta,np.abs(u[j,k]-u_new))
                     u_copy[j][k] = u_new
         u = u_copy
+        
         if delta < atol:
             break
+        
     return u
-
 
 def summary_stats(u, interior_mask):
     u_interior = u[1:-1, 1:-1][interior_mask]
