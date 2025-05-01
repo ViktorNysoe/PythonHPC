@@ -17,11 +17,11 @@ def jacobi_numba_jit(u, interior_mask, max_iter, atol=1e-6):
     #check that it is stored row-wise
     print("strides to check how it is stored:", u.strides)
     
-    u = u.copy()
+    u = np.copy(u)
 
     for i in range(max_iter):
         delta = 0
-        u_copy = u.copy()
+        u_copy = np.copy(u)
         for j in range(1,u.shape[0]-1):
             for k in range(1,u.shape[1]-1):
                 if interior_mask[j-1, k-1] == True:
