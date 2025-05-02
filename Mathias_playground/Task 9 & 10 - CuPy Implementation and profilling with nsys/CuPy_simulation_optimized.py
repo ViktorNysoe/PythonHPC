@@ -21,7 +21,8 @@ jacobi_step = cp.ElementwiseKernel(
     // compute new center value
     T u_new = (u_im1j + u_ip1j + u_ijm1 + u_ijp1) * (T)0.25;
     if (interior) {
-        // record how much it changed
+        // Update the new center value with the absolute difference which is the maximum of the two
+        // values (u_new and u_old_center) subtracted by the minimum of the two values
         local_diff = u_new > u_old_center
                    ? u_new - u_old_center
                    : u_old_center - u_new;
