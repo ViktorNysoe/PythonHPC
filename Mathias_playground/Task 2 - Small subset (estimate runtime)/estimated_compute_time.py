@@ -1,5 +1,5 @@
 # Computing the estimated total time to simulate all 5372 floorplans in the Modified Swiss Dwellings dataset
-time_20_floors = 3*60 + 41.162 # time in seconds for 20 floorplans
+time_20_floors = 1*60 + 15 # time in seconds for 20 floorplans
 # Projected time to simulate all 5372 floorplans
 total_time = time_20_floors/20 * 4571 # total time in seconds
 # number is so large that it should be in days, hours and minutes
