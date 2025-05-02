@@ -77,7 +77,7 @@ if __name__ == '__main__':
     ABS_TOL = 1e-4
 
     #initial call for it to compile
-    jacobi_numba_jit(all_u[0], all_interior_mask[0], MAX_ITER, ABS_TOL)
+    jacobi_numba_jit(all_u0[0], all_interior_mask[0], MAX_ITER, ABS_TOL)
 
 
     all_u = np.empty_like(all_u0)
@@ -93,7 +93,6 @@ if __name__ == '__main__':
     dec = total_time % 1
     total_hours = int(total_time)
     total_minutes = int(dec * 60)
-    
-    
+        
     print("Total time for all floorplans: ", total_hours, "hours and ", total_minutes, "minutes")
 
