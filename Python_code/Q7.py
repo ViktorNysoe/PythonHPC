@@ -1,8 +1,8 @@
 from os.path import join
 import sys
-import time
 import numpy as np
 from numba import jit
+import matplotlib.pyplot as plt
 
 
 def load_data(load_dir, bid):
@@ -18,13 +18,11 @@ def jacobi_numba_jit(u, interior_mask,max_iter,atol=1e-6):
     #check if it stored row-wise or column-wise
     print("strides to check how it is stored", u.strides)
 
-    u = np.copy(u)
-
     for i in range(max_iter):
         delta=0
         u_copy=np.copy(u)
         for j in range(1,u.shape[0]-1):
-            for k in range(1,u.shpae[1]-1):
+            for k in range(1,u.shape[1]-1):
                 if interior_mask[j-1][k-1]==True:
                     u_new = 0.25*(u[j+1][k] + u[j-1][k] + u[j][k-1] + u[j][k+1])
                     delta = max(delta,np.abs(u[j][k]-u_new))
@@ -63,7 +61,6 @@ if __name__ == '__main__':
         N = int(sys.argv[1])
     building_ids = building_ids[:N]
 
-    start_time = time.time()
     # Load floor plans
     all_u0 = np.empty((N, 514, 514))
     all_interior_mask = np.empty((N, 512, 512), dtype='bool')
@@ -79,20 +76,10 @@ if __name__ == '__main__':
     #initial call for it to compile
     jacobi_numba_jit(all_u0[0], all_interior_mask[0], MAX_ITER, ABS_TOL)
 
-
     all_u = np.empty_like(all_u0)
-    start_time = time.time()
     for i, (u0, interior_mask) in enumerate(zip(all_u0, all_interior_mask)):
         u = jacobi_numba_jit(u0, interior_mask, MAX_ITER, ABS_TOL)
         all_u[i] = u
-    end_time = time.time()-start_time
-    print("iterator call: ", end_time)
-
-    total_time = int(end_time)/20*4571
-    total_time = total_time/3600
-    dec = total_time % 1
-    total_hours = int(total_time)
-    total_minutes = int(dec * 60)
-        
-    print("Total time for all floorplans: ", total_hours, "hours and ", total_minutes, "minutes")
-
+        plt.imshow(u,cmap='magma', interpolation='nearest')
+    plt.savefig("test_map.png")
+    

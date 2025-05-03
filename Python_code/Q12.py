@@ -18,13 +18,11 @@ def jacobi_numba_jit(u, interior_mask,max_iter,atol=1e-6):
     #check if it stored row-wise or column-wise
     #print("strides to check how it is stored", u.strides)
 
-    u = np.copy(u)
-
     for i in range(max_iter):
         delta=0
         u_copy=np.copy(u)
         for j in prange(1,u.shape[0]-1):
-            for k in range(1,u.shpae[1]-1):
+            for k in range(1,u.shape[1]-1):
                 if interior_mask[j-1][k-1]==True:
                     u_new = 0.25*(u[j+1][k] + u[j-1][k] + u[j][k-1] + u[j][k+1])
                     delta = max(delta,np.abs(u[j][k]-u_new))
@@ -86,7 +84,6 @@ if __name__ == '__main__':
         all_u[i] = u
         
     # Print summary statistics in CSV format
-    count=0
     data = []
     stat_keys = ['mean_temp', 'std_temp', 'pct_above_18', 'pct_below_15']
     #print('building_id, ' + ', '.join(stat_keys))  # CSV header
@@ -96,9 +93,7 @@ if __name__ == '__main__':
         stats = summary_stats(u, interior_mask)
         for k in stat_keys:
             point_values.append(float(stats[k]))
-            
-        if point_values[-1]>50:
-            count+=1
+
         data.append(point_values)
 
         
@@ -110,7 +105,6 @@ if __name__ == '__main__':
 
     print("buildings_above_18_50%", buildings_above_18_50)
     print("buildings_below_15_50%", buildings_below_15_50)
-    print("count", count)
 
     h = df['mean_temp'].hist(color='lightseagreen')
     h.set_xlabel("Temperature")
