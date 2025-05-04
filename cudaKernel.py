@@ -3,6 +3,10 @@ from os.path import join
 import numpy as np
 from numba import cuda
 
+### How to run this script:
+# python cudaKernel.py <N> <LOAD_DIR>
+# where <N> is the number of buildings to process and <LOAD_DIR> is the directory containing the data files.
+
 def load_data(load_dir, bid):
     SIZE = 512
     u = np.zeros((SIZE + 2, SIZE + 2))  # padded grid
